@@ -226,3 +226,8 @@ func (m *maxLatencyWriter) flushLoop() {
 		}
 	}
 }
+<<<<<<< HEAD
+=======
+
+func (m *maxLatencyWriter) stop() { m.done <- true }
+>>>>>>> 652ebb75557b7351fa4ac5ae7fbcad4b9d3ef3c5
