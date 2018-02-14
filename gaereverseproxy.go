@@ -4,7 +4,7 @@
 
 // HTTP reverse proxy handler
 
-package goengine
+package gaereverseproxy
 
 import (
 	"io"
@@ -16,10 +16,11 @@ import (
 	"sync"
 	"time"
 )
+
 // app engine libs
 import (
-    "google.golang.org/appengine"
-    "google.golang.org/appengine/urlfetch"
+	"google.golang.org/appengine"
+	"google.golang.org/appengine/urlfetch"
 )
 
 // onExitFlushLoop is a callback set by tests to detect the state of the
@@ -108,7 +109,7 @@ var hopHeaders = []string{
 func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	// The primary difference with App Engine is that we must use the urlfetch library to obtain the Transport
 	transport := &urlfetch.Transport{
-	    Context:appengine.NewContext(req),
+		Context: appengine.NewContext(req),
 	}
 
 	outreq := new(http.Request)
@@ -226,8 +227,5 @@ func (m *maxLatencyWriter) flushLoop() {
 		}
 	}
 }
-<<<<<<< HEAD
-=======
 
 func (m *maxLatencyWriter) stop() { m.done <- true }
->>>>>>> 652ebb75557b7351fa4ac5ae7fbcad4b9d3ef3c5
